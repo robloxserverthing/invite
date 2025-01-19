@@ -18,8 +18,28 @@
                 const robloxUrl = `roblox://experiences/start?placeId=${placeId}&gameInstanceId=${gameInstanceId}`;
                 window.location.href = robloxUrl;
             } else {
-                // If parameters are missing, show an error message
-                document.body.innerHTML = '<h1>Error: Missing placeId or gameInstanceId</h1>';
+                // If parameters are missing, show an error message and retry button
+                document.body.innerHTML = `
+                    <h1>Error: Missing placeId or gameInstanceId</h1>
+                    <p>Please ensure both <code>placeId</code> and <code>gameInstanceId</code> are provided in the URL query.</p>
+                    <button onclick="retryRedirect()">Retry</button>
+                `;
+            }
+        }
+
+        // Function to retry the redirect
+        function retryRedirect() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const placeId = urlParams.get('placeId');
+            const gameInstanceId = urlParams.get('gameInstanceId');
+
+            if (placeId && gameInstanceId) {
+                // Construct the Roblox link again and redirect
+                const robloxUrl = `roblox://experiences/start?placeId=${placeId}&gameInstanceId=${gameInstanceId}`;
+                window.location.href = robloxUrl;
+            } else {
+                // If the parameters are still missing, reload the page
+                window.location.reload();
             }
         }
     </script>
