@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roblox Redirect</title>
+    <script>
+        // Function to extract query parameters and redirect
+        function redirectToRoblox() {
+            // Get the URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const placeId = urlParams.get('placeId');
+            const gameInstanceId = urlParams.get('gameInstanceId');
+
+            // Check if both parameters are provided
+            if (placeId && gameInstanceId) {
+                // Construct the Roblox link and redirect
+                const robloxUrl = `roblox://experiences/start?placeId=${placeId}&gameInstanceId=${gameInstanceId}`;
+                window.location.href = robloxUrl;
+            } else {
+                // If parameters are missing, show an error message
+                document.body.innerHTML = '<h1>Error: Missing placeId or gameInstanceId</h1>';
+            }
+        }
+    </script>
+</head>
+<body onload="redirectToRoblox()">
+    <h1>Redirecting to Roblox...</h1>
+</body>
+</html>
