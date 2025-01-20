@@ -4,6 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roblox Redirect</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 500px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        code {
+            background-color: #f1f1f1;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+    </style>
     <script>
         // Function to extract query parameters and redirect
         function redirectToRoblox() {
@@ -26,9 +80,11 @@
             } else {
                 // If placeId is missing, show an error message and retry button
                 document.body.innerHTML = `
-                    <h1>Error: Missing placeId</h1>
-                    <p>Please provide the <code>placeId</code> in the URL query.</p>
-                    <button onclick="retryRedirect()">Retry</button>
+                    <div class="container">
+                        <h1>Error: Missing placeId</h1>
+                        <p>Please provide the <code>placeId</code> in the URL query.</p>
+                        <button onclick="retryRedirect()">Retry</button>
+                    </div>
                 `;
             }
         }
@@ -57,6 +113,9 @@
     </script>
 </head>
 <body onload="redirectToRoblox()">
-    <h1>Redirecting to Roblox...</h1>
+    <div class="container">
+        <h1>Redirecting to Roblox...</h1>
+        <p>If this doesn't happen automatically, check the URL or click the button below to retry.</p>
+    </div>
 </body>
 </html>
